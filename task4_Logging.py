@@ -18,14 +18,14 @@ class Upload_files:
                 self.s3.upload_fileobj(data, "kritikasbucket", "d")
                 print("The pdf file is uploaded successfully")
         except PyPDF2.utils.PdfReadError:
-            print("invalid PDF file")
+            logging.error(e)
         except ClientError as e:
             logging.error(e)
             return False
         except IOError as e:
-            print("File Not Found")
+            logging.error(e)
         except Exception as e:
-            print("Error Code:", e)
+            logging.error(e)
         return True
 
 
